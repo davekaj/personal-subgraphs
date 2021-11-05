@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "lib": [
+            "ES2018",
+            "dom"
+        ],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "ES2018",
+        "outDir": "dist",
+        "resolveJsonModule": true,
+        "esModuleInterop": true
+    },
+    "include": [
+        "./tasks",
+        "./test"
+    ],
+    "exclude": [
+        "node_modules"
+    ],
+    "files": [
+        "./hardhat.config.ts"
+    ]
+}

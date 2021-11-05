@@ -1,0 +1,8 @@
+bin/
+build/
+cache/
+node_modules/
+hardhat/
+
+contracts/test
+contracts/examples
