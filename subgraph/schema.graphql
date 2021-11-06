@@ -1,0 +1,20 @@
+type User @entity {
+  "User Address"
+  id: ID!
+  "Sender Address"
+  sender: String!
+  "Tokens the user owns"
+  tokens: [Token!]! @derivedFrom(field: "user")
+}
+
+type Token @entity {
+  "Token address"
+  id: ID!
+  "User Address"
+  user: User!
+  "Balance of the user"
+  balance: BigInt!
+  "Decimals of the token"
+  decimals: Int!
+}
+

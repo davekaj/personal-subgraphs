@@ -16,9 +16,9 @@
         "typescript": "4.4.3"
     },
     "scripts": {
+        "typechain": "hardhat typechain",
         "build": "yarn typechain && npx hardhat compile",
-        "deploy-rinkeby": "npx hardhat deploy --network rinkeby",
-        "deploy-main": "npx hardhat deploy --network mainnet",
-        "typechain": "hardhat typechain"
+        "deploy-rinkeby": "yarn build && npx hardhat deploy --network rinkeby",
+        "deploy-main": "yarn build && npx hardhat deploy --network mainnet"
     }
 }

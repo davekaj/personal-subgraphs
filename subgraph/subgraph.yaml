@@ -1,0 +1,54 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: PersonalSubgraphAnchor
+    network: mainnet
+    source:
+      address: "0xdd81b49be551B3bed86205049fc9770e3147b114"
+      abi: PersonalSubgraphAnchor
+      startBlock: 13565142
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - AddERC20
+        - AddERC20Sender
+        - AddERC721
+        - AddERC721Sender
+      abis:
+        - name: PersonalSubgraphAnchor
+          file: ../contracts/build/contracts/contracts/PersonalSubgraphAnchor.sol/PersonalSubgraphAnchor.json
+        - name: ERC20
+          file: ./abis/CondensedERC20.json
+      eventHandlers:
+        - event: AddERC20(indexed address,indexed address,indexed address)
+          handler: handleAddERC20
+        # - event: AddERC20Sender(indexed address,indexed address,indexed address)
+        #   handler: handleAddERC20Sender
+        # - event: AddERC721(address,address,uint256)
+        #   handler: handleAddERC721
+        # - event: AddERC721Sender(address,address,uint256)
+        #   handler: handleAddERC721Sender
+      file: ./src/anchor.ts
+templates:
+  - name: ERC20
+    kind: ethereum/contract
+    network: mainnet
+    source:
+      abi: ERC20
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./src/erc20.ts
+      entities:
+        - ERC20
+      abis:
+        - name: ERC20
+          file: ./abis/CondensedERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
