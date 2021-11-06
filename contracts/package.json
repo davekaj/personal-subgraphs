@@ -17,9 +17,8 @@
     },
     "scripts": {
         "build": "yarn typechain && npx hardhat compile",
-        "deploy": "npx hardhat deploy",
+        "deploy-rinkeby": "npx hardhat deploy --network rinkeby",
         "deploy-main": "npx hardhat deploy --network mainnet",
-        "typechain": "hardhat typechain",
-        "verify": "hardhat verify"
+        "typechain": "hardhat typechain"
     }
 }
